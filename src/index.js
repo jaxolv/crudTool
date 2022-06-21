@@ -8,10 +8,6 @@ app.use(express.json())             // condicionando a estrutura a ser usada nas
 
 const discografia = []
 
-/* Create
-   Read
-   Upload
-   Delete */
 
 // create: post - onde criarei um dado que será inserido no 'banco de dados'
 app.post("/discos", (req, res) => {
