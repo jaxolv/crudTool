@@ -15,8 +15,18 @@ function segundos(tempo) {
     para o usuário, será retornado o valor em segundos.
     ex.: se deseja colocar 1m01s nesta função, digite 1.01;
     o valor retornado será 61: 1 (60 segundos) + 0.01 (1 segundo). */
-    totalSegundos = parseInt(conversor(tempo) * 60)
+    totalSegundos = Math.round(conversor(tempo) * 60)
     return totalSegundos
+}
+
+function stringMinutagem(tempo) {
+    min = parseInt(conversor(tempo))
+    seg = Math.round((conversor(tempo) - min) * 60)
+    if (seg < 10) {
+        return `${min}:0${seg}`
+    } else {
+        return `${min}:${seg}`
+    }
 }
 
 module.exports = segundos
