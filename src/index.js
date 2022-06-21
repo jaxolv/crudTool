@@ -7,13 +7,9 @@ const app = express()               // instanciando o 'express' em 'app';
 app.use(express.json())             // condicionando a estrutura a ser usada nas requisições e respostas;
 
 const discografia = []
+let ordemDuracao = []
+let ordemAno = []
 
-/* Create
-   Read
-   Upload
-   Delete */
-
-// create: post - onde criarei um dado que será inserido no 'banco de dados'
 app.post("/discos", (req, res) => {
     const { nome, ano, faixas, duracao, streaming } = req.body
     const album = { id: v4(), nome, ano, faixas, duracao: segundos(duracao), streaming }
@@ -21,9 +17,22 @@ app.post("/discos", (req, res) => {
     return res.json(album)
 })
 
-// read: get - onde listarei todos os álbuns adicionados 
 app.get("/discos", (req, res) => {
     return res.json(discografia)
+})
+
+app.get("/discos/id/ano", (req, res) => {
+    ordemAno = discografia.sort(function (a, b) {
+        return a.ano - b.ano
+    })
+    return res.json(ordemAno)
+})
+
+app.get("/discos/id/duracao", (req, res) => {
+    ordemDuracao = discografia.sort(function (a, b) {
+        return b.duracao - a.duracao
+    })
+    return res.json(ordemDuracao)
 })
 
 app.put("/discos/:id", (req, res) => {
