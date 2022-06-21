@@ -1,10 +1,10 @@
 const segundos = require('../src/modules/conversor')
-const express = require('express')  // incluindo o módulo 'express' no code;
-const { v4 } = require('uuid')      // incluindo o módulo específico de 'uuid';
+const express = require('express')
+const { v4 } = require('uuid')
 
-const app = express()               // instanciando o 'express' em 'app';
+const app = express()
 
-app.use(express.json())             // condicionando a estrutura a ser usada nas requisições e respostas;
+app.use(express.json())
 
 const discografia = []
 let ordemDuracao = []
